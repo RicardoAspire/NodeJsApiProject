@@ -103,6 +103,12 @@ routes.put('/user/:id',(req,res)=>{
     createUpdateDeleteQuery(sql,res,'user updated');
 });
 
+//Delete user
+routes.delete('/user/:id',(req,res)=>{
+    const {id} = req.params
+    let sql = `DELETE FROM restaurant_users WHERE id = '${id}'`
+    createUpdateDeleteQuery(sql,res,'user deleted');    
+});
 // ------------------- AUTH end start ---------------------
 
 // ------------------- Categories start -------------------
@@ -428,6 +434,89 @@ routes.put('/tickets/:id',(req,res)=>{
      createUpdateDeleteQuery(sql,res,'ticket updated');
 });
 // ------------------- Ticket end ---------------------
+
+
+
+
+// ------------------- Activity start -------------------
+//Get all Products
+routes.get('/productsActivity',(req,res)=>{
+    const products = [
+        {id:0, name:'burger', price:20, code:'A0132BUR', status:'ready', date:'14/08/2022'},
+        {id:1, name:'pizza', price:40, code:'A0132PIZ', status:'ready', date:'04/07/2022'},
+        {id:2, name:'cake', price:60, code:'A0132CAK', status:'pendient', date:'17/06/2022'},
+        {id:3, name:'soup', price:10, code:'A0132SOU', status:'ready', date:'12/08/2022'},
+        {id:4, name:'chicken', price:30, code:'A0132CHI', status:'pendient', date:'07/08/2022'},
+        {id:5, name:'pasta', price:25, code:'A0132PAS', status:'ready', date:'30/04/2022'},
+        {id:6, name:'icecream', price:5, code:'A0132ICE', status:'pendient', date:'26/05/2022'},
+        {id:7, name:'waffles', price:15, code:'A0132WAF', status:'pendient', date:'24/08/2022'},
+        {id:8, name:'hotcakes', price:15, code:'A0132HOT', status:'ready', date:'24/02/2022'},
+        {id:9, name:'tacos', price:20, code:'A0132TAC', status:'ready', date:'04/03/2022'},
+    ]
+    res.json(products);
+});
+//Get all Products
+routes.get('/couponsActivity',(req,res)=>{
+    const coupons = [
+        {id:0, couponName: 'extra+2', couponCode: 'A0132C0', status:'available', validDate:'27/12/2022'},
+        {id:1, couponName: 'extra+5', couponCode: 'A0132C1', status:'available', validDate:'27/12/2022'},
+        {id:2, couponName: 'extrax2', couponCode: 'A0132C2', status:'expired', validDate:'17/02/2022'},
+        {id:3, couponName: 'extra+3', couponCode: 'A0132C3', status:'available', validDate:'27/12/2022'},
+        {id:4, couponName: 'extra+10', couponCode: 'A0132C4', status:'available', validDate:'27/12/2022'},
+        {id:5, couponName: 'extra+20', couponCode: 'A0132C5', status:'available', validDate:'27/12/2022'},
+        {id:6, couponName: 'extrax3', couponCode: 'A0132C6', status:'available', validDate:'27/12/2022'},
+        {id:7, couponName: 'extra', couponCode: 'A0132C7', status:'expired', validDate:'17/02/2022'},
+        {id:8, couponName: 'extra+15', couponCode: 'A0132C8', status:'available', validDate:'27/12/2022'},
+        {id:9, couponName: 'extra+25', couponCode: 'A0132C9', status:'expired', validDate:'17/02/2022'},
+        {id:10, couponName: 'extra+22', couponCode: 'A0132C10', status:'available', validDate:'27/12/2022'},
+        {id:11, couponName: 'extrax5', couponCode: 'A0132C11', status:'expired', validDate:'17/02/2022'},
+        {id:12, couponName: 'extra+7', couponCode: 'A0132C12', status:'available', validDate:'27/12/2022'},
+        {id:13, couponName: 'extra+11', couponCode: 'A0132C13', status:'available', validDate:'27/12/2022'},
+        {id:14, couponName: 'extra+9', couponCode: 'A0132C14', status:'expired', validDate:'17/02/2022'},
+        {id:15, couponName: 'extra+12', couponCode: 'A0132C15', status:'expired', validDate:'17/02/2022'},
+        {id:16, couponName: 'extrax6', couponCode: 'A0132C16', status:'expired', validDate:'17/02/2022'},
+        {id:17, couponName: 'extra+1', couponCode: 'A0132C17', status:'available', validDate:'27/12/2022'},
+        {id:18, couponName: 'extra+40', couponCode: 'A0132C18', status:'available', validDate:'27/12/2022'},
+        {id:19, couponName: 'extra+16', couponCode: 'A0132C19', status:'expired', validDate:'17/02/2022'},
+    ]
+    res.json(coupons);
+});
+//Get all Products
+routes.get('/usersActivity',(req,res)=>{
+    const users = [
+        {id:0, username:'Ricardo', email:'ricardo@gmail.com', status:'online', date:'15/08/2022'},
+        {id:1, username:'Andrea', email:'andrea@gmail.com', status:'disconected', date:'05/08/2022'},
+        {id:2, username:'Omar', email:'omar@gmail.com', status:'online', date:'15/08/2022'},
+        {id:3, username:'Mary', email:'mary@gmail.com', status:'disconected', date:'06/08/2022'},
+        {id:4, username:'Magaly', email:'magaly@gmail.com', status:'disconected', date:'07/08/2022'},
+        {id:5, username:'Mau', email:'mau@gmail.com', status:'online', date:'15/08/2022'},
+        {id:6, username:'Abril', email:'abril@gmail.com', status:'disconected', date:'03/08/2022'},
+        {id:7, username:'Cristian', email:'cristian@gmail.com', status:'disconected', date:'05/08/2022'},
+        {id:8, username:'Arantza', email:'arantza@gmail.com', status:'online', date:'15/08/2022'},
+        {id:9, username:'Arantxa', email:'arantxa@gmail.com', status:'online', date:'15/08/2022'},
+        {id:10, username:'Marianto', email:'marianto@gmail.com', status:'disconected', date:'01/08/2022'},
+        {id:11, username:'Jacobo', email:'jacobo@gmail.com', status:'disconected', date:'06/08/2022'},
+        {id:12, username:'Alejandro', email:'alejandro@gmail.com', status:'online', date:'15/08/2022'},
+        {id:13, username:'Cesar', email:'cesar@gmail.com', status:'online', date:'15/08/2022'},
+        {id:14, username:'Juan', email:'juan@gmail.com', status:'online', date:'15/08/2022'},
+        {id:15, username:'Carlos', email:'carlos@gmail.com', status:'disconected', date:'12/08/2022'},
+        {id:16, username:'Vilma', email:'vilma@gmail.com', status:'online', date:'15/08/2022'},
+        {id:17, username:'Isis', email:'isis@gmail.com', status:'disconected', date:'13/08/2022'},
+    ]
+    res.json(users);
+});
+
+
+
+
+// ------------------- Activity end ---------------------
+
+
+
+
+
+
+
 
 
 
